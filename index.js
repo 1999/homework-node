@@ -1,35 +1,78 @@
 'use strict';
 
-function Node(data) {
-    this.data = data;
-    this.next = null;
-}
-
 function LinkedList() {
-    this.length = 0;
     this.head = null;
 }
 
-LinkedList.prototype.add = function(value) {
-    let node = new Node(value);
-    let currentNode = this.head;
- 
-    if (!currentNode) {
+LinkedList.prototype.addNext = function(val) {
+
+    let node = {
+        value: val,
+        next: null
+    };
+
+    if (!this.head) {
+
         this.head = node;
-        this.length++;
-         
-        return node;
+
+    } else {
+
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+        current.next = node;
+
     }
- 
-    while (currentNode.next) {
-        currentNode = currentNode.next;
+};
+
+LinkedList.prototype.isCircular = function() {
+    if (this.head === null) {
+        return false;
     }
- 
-    currentNode.next = node;
- 
-    this.length++;
-     
-    return node;
+
+    let slow = this.head;
+    let fast = this.head;
+
+    for (;;) {
+        slow = slow.next;
+
+        if (fast.next !== null) {
+            fast = fast.next.next;
+        } else {
+            return false;
+        }
+
+        if (slow === null) {
+            return false;
+        } else if (fast === null) {
+            return false;
+        }
+
+        if (slow === fast) {
+            return true;
+        }
+    }
+};
+
+LinkedList.prototype.getNextTotal = function() {
+    let current = this.head;
+    let i = 0;
+
+    if (this.head === null) {
+        return 'no nodes';
+    }
+
+    if (this.isCircular()) {
+        return 'node is circular';
+    }
+
+    while (current.next) {
+        i++;
+        current = current.next;
+    }
+
+    return i;
 };
 
 module.exports = LinkedList;
