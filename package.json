@@ -23,6 +23,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec ./test/linkedList.js"
   },
+  "license": "MIT",
   "engines": {
     "node": ">=6"
   }
