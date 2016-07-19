@@ -60,11 +60,11 @@ LinkedList.prototype.getNextTotal = function() {
     let i = 0;
 
     if (this.head === null) {
-        return 'no nodes';
+        throw new Error('No nodes');
     }
 
     if (this.isCircular()) {
-        return 'node is circular';
+        throw new Error('Node is circular');
     }
 
     while (current.next) {

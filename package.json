@@ -1,7 +1,7 @@
 {
   "name": "homework-node",
-  "version": "1.0.0",
-  "description": "task for training skill",
+  "version": "0.0.1",
+  "description": "Simple implementation of single linked list",
   "private": false,
   "maintainers": [
     "Molchanov Kirill <kirill-m@yandex-team.ru>"
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/k03mad/homework-node/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.5.3",
     "eslint": "2.12.0"

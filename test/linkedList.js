@@ -1,9 +1,11 @@
 'use strict';
 
 const expect = require('chai').expect;
+const assert = require('chai').assert;
+
 const LinkedList = require('../index.js');
 
-describe('npm package tests', () => {
+describe('single linked list tests', () => {
 
     let list = new LinkedList();
 
@@ -60,12 +62,17 @@ describe('npm package tests', () => {
     describe('next counter', () => {
 
         it('should print message if list circular', () => {
-            expect(list.getNextTotal()).to.equal('node is circular');
+            assert.throws(() => {
+                list.getNextTotal();
+            }, 'Node is circular');
         });
 
         it('should print message if there are no nodes', () => {
             list = new LinkedList();
-            expect(list.getNextTotal()).to.equal('no nodes');
+
+            assert.throws(() => {
+                list.getNextTotal();
+            }, 'No nodes');
         });
 
         it('should have 0 next nodes after add 1 node', () => {
