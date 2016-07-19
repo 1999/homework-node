@@ -6,7 +6,7 @@
   "maintainers": [
     "Molchanov Kirill <kirill-m@yandex-team.ru>"
   ],
-  "repositories": [
+  "repository": [
     {
       "type": "git",
       "url": "https://github.com/k03mad/homework-node/"
