@@ -13,6 +13,6 @@ $ npm install homework-node
 ```
 
 ```js
-const node = require('homework-node');
-let list = new node();
+const Node = require('homework-node');
+const singleList = new Node();
 ```
