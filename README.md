@@ -15,4 +15,11 @@ $ npm install homework-node
 ```js
 const Node = require('homework-node');
 const singleList = new Node();
+
+// add next element to single list
+singleList.addNext(value)
+// return true if single list is circular
+singleList.isCircular()
+// returns the number of the following elements
+singleList.getNextTotal()
 ```
