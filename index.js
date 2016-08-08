@@ -1,78 +1,113 @@
 'use strict';
 
-function LinkedList() {
-    this.head = null;
-}
+class LinkedList {
 
-LinkedList.prototype.addNext = function(val) {
+    constructor() {
+        this.head = null;
+    }
 
-    let node = {
-        value: val,
-        next: null
-    };
+    addNext(val) {
 
-    if (!this.head) {
+        let node = {
+            value: val,
+            next: null
+        };
 
-        this.head = node;
+        if (!this.head) {
 
-    } else {
+            this.head = node;
 
+        } else {
+
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = node;
+
+        }
+    }
+
+    isCircular () {
+        if (this.head === null) {
+            return false;
+        }
+
+        let slow = this.head;
+        let fast = this.head;
+
+        for (;;) {
+            slow = slow.next;
+
+            if (fast.next !== null) {
+                fast = fast.next.next;
+            } else {
+                return false;
+            }
+
+            if (slow === null) {
+                return false;
+            } else if (fast === null) {
+                return false;
+            }
+
+            if (slow === fast) {
+                return true;
+            }
+        }
+    }
+
+    getNextTotal() {
         let current = this.head;
+        let i = 0;
+
+        if (this.head === null) {
+            throw new Error('No nodes');
+        }
+
+        if (this.isCircular()) {
+            throw new Error('Node is circular');
+        }
+
         while (current.next) {
+            i++;
             current = current.next;
         }
-        current.next = node;
 
-    }
-};
-
-LinkedList.prototype.isCircular = function() {
-    if (this.head === null) {
-        return false;
+        return i;
     }
 
-    let slow = this.head;
-    let fast = this.head;
+}
 
-    for (;;) {
-        slow = slow.next;
+function getIntersectionNode(list1, list2) {
+    let firstListLength = list1.getNextTotal();
+    let secondListLength = list2.getNextTotal();
+    
+    while (firstListLength > secondListLength) {
+        list1.head = list1.head.next;
+        firstListLength--;
+    }
+    
+    while (secondListLength > firstListLength) {
+        list2.head = list2.head.next;
+        secondListLength--;
+    }
 
-        if (fast.next !== null) {
-            fast = fast.next.next;
-        } else {
-            return false;
+    while (list1.head !== null) {
+
+        if (list1.head === list2.head) {
+            return list1.head.value;
         }
 
-        if (slow === null) {
-            return false;
-        } else if (fast === null) {
-            return false;
-        }
-
-        if (slow === fast) {
-            return true;
-        }
+        list1.head = list1.head.next;
+        list2.head = list2.head.next;
     }
+
+    throw new Error('No intersection');
+}
+
+module.exports = {
+    LinkedList,
+    getIntersectionNode
 };
 
-LinkedList.prototype.getNextTotal = function() {
-    let current = this.head;
-    let i = 0;
-
-    if (this.head === null) {
-        throw new Error('No nodes');
-    }
-
-    if (this.isCircular()) {
-        throw new Error('Node is circular');
-    }
-
-    while (current.next) {
-        i++;
-        current = current.next;
-    }
-
-    return i;
-};
-
-module.exports = LinkedList;
