@@ -22,4 +22,6 @@ singleList.addNext(value)
 singleList.isCircular()
 // returns the number of the following elements
 singleList.getNextTotal()
+// returns element which have both nodes
+singleList.getIntersectionNode()
 ```
