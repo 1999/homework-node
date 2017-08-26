@@ -2,6 +2,8 @@
 
 ### Simple implementation of single linked list.
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/1999/homework-node.svg)](https://greenkeeper.io/)
+
 Linked list is a linear collection of data elements, called nodes, pointing to the next node by means of a pointer
 
 NPM link: https://www.npmjs.com/package/homework-node
