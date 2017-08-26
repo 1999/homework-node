@@ -16,9 +16,9 @@
     "url": "https://github.com/k03mad/homework-node/issues"
   },
   "devDependencies": {
-    "chai": "3.5.0",
-    "mocha": "2.5.3",
-    "eslint": "2.12.0"
+    "chai": "4.1.1",
+    "mocha": "3.5.0",
+    "eslint": "4.5.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec ./test/linkedList.js"
